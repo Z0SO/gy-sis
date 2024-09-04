@@ -1,4 +1,7 @@
 from pathlib import Path
+from datetime import timedelta
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +33,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     
     'historias_clinicas',
+    'autenticacion',
 ]
 
 THIRD_PARTY_APPS = [
@@ -130,3 +134,39 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# configuracion de rest_framework
+REST_FRAMEWORK = {
+    # se configura que se usara el modelo de autenticacion jwt
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    # se configura que solo los usuarios autenticados pueden acceder a las vistas
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+# configuracion de cors
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+
+]
+
+# configuracion de rest_framework_simplejwt
+SIMPLE_JWT = {
+    # se configura que el token de acceso y el token de refresco duran 30 minutos y 7 dias respectivamente
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+
+    # se configura que el token de refresco es necesario para obtener un nuevo token de acceso
+    'ROTATE_REFRESH_TOKENS': True,
+
+    'BLACKLIST_AFTER_ROTATION': True,
+
+    # esto es para que el token de refresco sea enviado en una cookie y no en el body de la peticion
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+

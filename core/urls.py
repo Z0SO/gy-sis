@@ -17,8 +17,6 @@ por lo que se puede acceder a las siguientes urls
 - /url/api/pacientes/
 - /url/api/historias_clinicas/
 - /url/api/revisiones/
-
-
 """
 from django.contrib import admin
 from django.urls import path
@@ -28,5 +26,5 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('historias_clinicas.urls')),
-
+    path('auth/', include('autenticacion.urls')),
 ]

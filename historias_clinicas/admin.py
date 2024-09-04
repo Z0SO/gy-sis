@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Paciente, HistoriaClinica, RevisionHistoria
+
+admin.site.register(Paciente)
+admin.site.register(HistoriaClinica)
+
+
+admin.site.register(RevisionHistoria)
+
