@@ -38,7 +38,7 @@ class HistoriaClinica(models.Model):
     # Por ejemplo: hemoglobina: 13,2
       
     # laboratiorio puede existir o no, es decir, puede ser null
-    # hc_laboratorio = models.TextField(blank=True, null=True)
+    hc_laboratorio = models.TextField(blank=True, null=True)
     
 
     diagnostico_presuntivo = models.TextField()

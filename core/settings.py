@@ -143,31 +143,31 @@ CORS_ALLOWED_ORIGINS = [
 
 ]
 
-# # configuracion de rest_framework
-# REST_FRAMEWORK = {
-#     # se configura que se usara el modelo de autenticacion jwt
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     ),
+# configuracion de rest_framework
+REST_FRAMEWORK = {
+    # se configura que se usara el modelo de autenticacion jwt
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 
-#     # se configura que solo los usuarios autenticados pueden acceder a las vistas
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-# }
+    # se configura que solo los usuarios autenticados pueden acceder a las vistas
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
-# # configuracion de rest_framework_simplejwt
-# SIMPLE_JWT = {
-#     # se configura que el token de acceso y el token de refresco duran 30 minutos y 7 dias respectivamente
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+# configuracion de rest_framework_simplejwt
+SIMPLE_JWT = {
+    # se configura que el token de acceso y el token de refresco duran 30 minutos y 7 dias respectivamente
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 
-#     # se configura que el token de refresco es necesario para obtener un nuevo token de acceso
-#     'ROTATE_REFRESH_TOKENS': True,
+    # se configura que el token de refresco es necesario para obtener un nuevo token de acceso
+    'ROTATE_REFRESH_TOKENS': True,
 
-#     'BLACKLIST_AFTER_ROTATION': True,
+    'BLACKLIST_AFTER_ROTATION': True,
 
-#     # esto es para que el token de refresco sea enviado en una cookie y no en el body de la peticion
-#     'AUTH_HEADER_TYPES': ('Bearer',),
-# }
+    # esto es para que el token de refresco sea enviado en una cookie y no en el body de la peticion
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
