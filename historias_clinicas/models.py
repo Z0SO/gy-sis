@@ -30,6 +30,17 @@ class HistoriaClinica(models.Model):
     motivo_consulta = models.TextField()
     derivado_por = models.CharField(max_length=50)
     antecedentes_clinicos = models.TextField()
+    
+    # necesita un campo para registrar laboratorio También necesitamos que haya un lugarcito para escribir los laboratorios si es que los solicitamos.
+    # Eso puede estar en la historia clínica, luego de antecedentes personales.
+
+    # Los resultados de por ejemplo una extracción de sangre o de orina
+    # Por ejemplo: hemoglobina: 13,2
+      
+    # laboratiorio puede existir o no, es decir, puede ser null
+    # hc_laboratorio = models.TextField(blank=True, null=True)
+    
+
     diagnostico_presuntivo = models.TextField()
     tratamientos_anteriores = models.TextField()
     tratamiento_actual = models.TextField()
@@ -45,11 +56,14 @@ class HistoriaClinica(models.Model):
 # esta revision tiene una unica historia clinica asociada y se puede acceder a ella desde el modelo HistoriaClinica con el nombre 'revisiones'
 
 
-class RevisionHistoria(models.Model):
+class ConsultaControl(models.Model):
     # foreignkey significa que una revision tiene una historia clinica asociada
     historia_clinica = models.ForeignKey(HistoriaClinica, related_name='revisiones', on_delete=models.CASCADE)
     fecha_evaluacion = models.DateTimeField(auto_now_add=True)
-
+    
+    # lo mismo para laboratorio de consulta control
+    cc_laboratorio = models.TextField(blank=True, null=True)
+    
     # estado actual es lo que ella llama SINTOMATOLOGIA ACTUAL
     estado_actual = models.TextField()
     indicaciones = models.TextField(blank=True, null=True)

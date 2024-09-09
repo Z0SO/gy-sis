@@ -1,7 +1,7 @@
 # historias_clinicas/serializers.py
 
 from rest_framework import serializers
-from .models import Paciente, HistoriaClinica, RevisionHistoria
+from .models import Paciente, HistoriaClinica, ConsultaControl
 
 class PacienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,9 +13,9 @@ class HistoriaClinicaSerializer(serializers.ModelSerializer):
         model = HistoriaClinica
         fields = '__all__'
 
-class RevisionHistoriaSerializer(serializers.ModelSerializer):
+class ConsultaControlSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RevisionHistoria
+        model = ConsultaControl
         fields = '__all__'
 
 
