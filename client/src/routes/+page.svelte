@@ -3,7 +3,10 @@
   import Login from '../components/auth/Login.svelte';
 </script>
 
-<main class="flex flex-col bg-gradient-to-b from-zinc-300 to-white justify-center items-center min-h-screen">
+<main 
+  class="flex flex-col bg-gradient-to-b from-zinc-300 to-white justify-center items-center min-h-screen"
+>
+
   <Login />
 </main>
 
@@ -18,4 +21,8 @@
     border: 1px solid #ccc;
     border-radius: 0.375rem;
   }
+
+
+  el login que esta dentro del main esta muy estirado en los extremos, se puede solucionar con un max-width en tailwind es
+
 </style>

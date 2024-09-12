@@ -1,9 +1,13 @@
 
-<section class="gradient-form h-full dark:bg-neutral-700">
-  <div class="container h-full p-10">
+<section 
+  class="gradient-form h-full dark:bg-neutral-700 mx-auto my-auto"
+>
+  <div class="container h-full px-80 mx-auto"
+  >
     <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
       <div class="w-full">
-        <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+        <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800"
+        >
           <div class="g-0 lg:flex lg:flex-wrap">
             <!-- Columna izquierda -->
             <div class="px-4 md:px-0 lg:w-6/12">
