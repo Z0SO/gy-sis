@@ -4,10 +4,14 @@
 </script>
 
 <main 
-  class="flex flex-col bg-gradient-to-b from-zinc-300 to-white justify-center items-center min-h-screen"
+  class="flex flex-col bg-gradient-to-b from-zinc-300 to-white justify-center items-center"
 >
 
+
   <Login />
+
+
+
 </main>
 
 <style>
@@ -23,6 +27,5 @@
   }
 
 
-  el login que esta dentro del main esta muy estirado en los extremos, se puede solucionar con un max-width en tailwind es
 
 </style>
