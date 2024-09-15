@@ -1,97 +1,106 @@
 
-<section 
-  class="gradient-form h-full dark:bg-neutral-700 mx-auto my-auto"
+<script>
+  let username = '';
+  let password = '';
+  let isUsernameActive = false;
+  let isPasswordActive = false;
+
+  const handleLogin = () => {
+    // Aquí puedes agregar la lógica para el login
+    console.log("Logging in with:", { username, password });
+  };
+</script>
+
+<section class="gradient-form h-full bg-transparent dark:bg-transparent dark:text-neutral-200"
 >
-  <div class="container h-full px-80 mx-auto"
+  <div class="container h-full p-10"
   >
-    <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
+    <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200 shadow-lg"
+    >
       <div class="w-full">
-        <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800"
+        <div class="block rounded-lg bg-white dark:bg-neutral-800 sombreado"
         >
           <div class="g-0 lg:flex lg:flex-wrap">
-            <!-- Columna izquierda -->
+            <!-- Columna izquierda (formulario de login) -->
             <div class="px-4 md:px-0 lg:w-6/12">
               <div class="md:mx-6 md:p-12">
                 <!-- Logo -->
                 <div class="text-center">
-                  <img
-                    class="mx-auto w-48"
-                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    alt="logo" />
-                  <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
-                    Iniciar Sesión
-                  </h4>
+                  <img class="mx-auto w-48" src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="logo" />
+                  <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">GY-SIS</h4>
                 </div>
 
                 <form>
-                  
-                  <!-- Username input -->
+                  <p class="mb-4">Ingrese su cuenta</p>
+
+                  <!-- Input de Username -->
                   <div class="relative mb-4">
                     <input
+                      bind:value={username}
                       type="text"
-                      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
-                      id="username"
-                        placeholder="" />
+                      class="peer block w-full rounded border-0 bg-transparent px-3 py-2 leading-[1.6] outline-none transition-all duration-200 ease-linear dark:text-white dark:placeholder:text-neutral-300"
+                      placeholder=""
+                      on:focus={() => isUsernameActive = true}
+                      on:blur={() => isUsernameActive = username.length > 0}
+                    />
                     <label
-                      for="username"
-                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary dark:text-neutral-400">
-                      Usuario
+                      class="absolute left-3 top-2 transition-all duration-200 ease-out text-neutral-500 dark:text-neutral-400 pointer-events-none transform {isUsernameActive || username.length ? '-translate-y-5 scale-75' : ''}"
+                    >
+                      Username
                     </label>
                   </div>
 
-                  <!-- Password input -->
+                  <!-- Input de Password -->
                   <div class="relative mb-4">
                     <input
+                      bind:value={password}
                       type="password"
-                      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300 pass-color"
-                      id="password"
-                      placeholder="" />
+                      class="peer block w-full rounded border-0 bg-transparent px-3 py-2 leading-[1.6] outline-none transition-all duration-200 ease-linear dark:text-white dark:placeholder:text-neutral-300"
+                      placeholder=""
+                      on:focus={() => isPasswordActive = true}
+                      on:blur={() => isPasswordActive = password.length > 0}
+                    />
                     <label
-                      for="password"
-                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary dark:text-neutral-400">
-                      Contraseña
+                      class="absolute left-3 top-2 transition-all duration-200 ease-out text-neutral-500 dark:text-neutral-400 pointer-events-none transform {isPasswordActive || password.length ? '-translate-y-5 scale-75' : ''}"
+                    >
+                      Password
                     </label>
                   </div>
 
-                  <!-- Submit button -->
+                  <!-- Botón de Login -->
                   <div class="mb-12 pb-1 pt-1 text-center">
                     <button
-                      class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out"
-                      type="button"
-                      style="
-                        background: linear-gradient(to right, #50C9C3, #3F8D87);
-                      ">
-                      Iniciar sesión
+                      on:click|preventDefault={handleLogin}
+                      class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out"
+                      style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
+                    >
+                      Log in
                     </button>
-
-                    <!-- Forgot password link -->
-                    <a href="#!">¿Olvidaste tu contraseña?</a>
+                    <a href="#!" class="text-sm text-blue-600">Forgot password?</a>
                   </div>
 
-                  <!-- <!-1- Register button -1-> -->
-                  <!-- <div class="flex items-center justify-between pb-6"> -->
-                  <!--   <p class="mb-0 me-2">¿No tienes una cuenta?</p> -->
-                  <!--   <button -->
-                  <!--     type="button" -->
-                  <!--     class="inline-block rounded border-2 border-blue-500 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-blue-500 transition duration-150 ease-in-out hover:bg-blue-100 dark:hover:bg-cyan-950" -->
-                  <!--     data-twe-ripple-init> -->
-                  <!--     Registrarse -->
-                  <!--   </button> -->
-                  <!-- </div> -->
+                  <!-- Botón de Registro -->
+                  <div class="flex items-center justify-between pb-6">
+                    <p class="mb-0">Don't have an account?</p>
+                    <button
+                      class="inline-block rounded border-2 border-red-500 px-6 py-2 text-xs font-medium text-red-500 transition duration-150 ease-in-out hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-800"
+                    >
+                      Register
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
 
-            <!-- Columna derecha con fondo de gradiente -->
+            <!-- Columna derecha (descripción) -->
             <div
               class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-e-lg lg:rounded-bl-none"
-              style="background: linear-gradient(to right, #50C9C3, #3F8D87)">
+              style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
+            >
               <div class="px-4 py-6 text-white md:mx-6 md:p-12">
-                <h4 class="mb-6 text-xl font-semibold">
-                  Somos más que una empresa
-                </h4>
+                <h4 class="mb-6 text-xl font-semibold">We are more than just a company</h4>
                 <p class="text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 </p>
               </div>
             </div>
@@ -103,25 +112,12 @@
 </section>
 
 <style>
-  /* Modo oscuro: gradiente azul a cian */
-  @media (prefers-color-scheme: dark) {
-    section.gradient-form .lg\:rounded-e-lg {
-      background: linear-gradient(to right, #0066cc, #00bcd4);
-    }
-    button {
-      background: linear-gradient(to right, #0066cc, #00bcd4);
-    }
+  .peer:focus ~ label,
+  .peer:not(:placeholder-shown) ~ label {
+    @apply -translate-y-5 scale-75 text-primary;
   }
 
-
-
-.pass-color {
-  color: #3F8D87;
-
+  .sombreado {
+    box-shadow: 0 10px 20px 4px gray;
   }
-
-
-
-
-
 </style>

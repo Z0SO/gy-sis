@@ -1,32 +1,36 @@
 
 <!-- src/routes/+layout.svelte -->
 <script>
-  // Aquí puedes agregar lógica si es necesario
-
   import Navbar from '../components/layout/Navbar.svelte';
   import Footer from '../components/layout/Footer.svelte';
 </script>
 
-<main>
-
+<main class="flex flex-col min-h-screen">
   <Navbar />
   
-  <slot></slot> <!-- Aquí se renderizarán las páginas hijas -->
-  
-  <Footer />
+  <!-- El contenido de las páginas hijas -->
+  <div class="flex-grow">
+    <slot></slot> <!-- Aquí se renderizan las páginas hijas -->
+  </div>
 
+  <Footer />
 </main>
 
 <style>
-  /* Agrega estilos generales aquí */
-  
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
+  :global(body) {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-:global(body) {
-  font-family: 'Roboto', sans-serif;
-}
+  main {
+    min-height: 100vh; /* Asegura que el footer siempre esté al final */
+  }
 
+  /* Estilos para Navbar y Footer si es necesario pueden ir aquí */
 </style>
