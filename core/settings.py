@@ -140,20 +140,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # configuracion de cors
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-
+    "http://localhost:5173",
 ]
 
 # configuracion de rest_framework
 REST_FRAMEWORK = {
     # se configura que se usara el modelo de autenticacion jwt
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ),
 
     # se configura que solo los usuarios autenticados pueden acceder a las vistas
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    # 'default_permission_classes': (
+    #     'rest_framework.permissions.isauthenticated',
+    # ),
 }
 
 # configuracion de rest_framework_simplejwt

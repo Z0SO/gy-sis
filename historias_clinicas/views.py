@@ -11,7 +11,7 @@ class PacienteViewSet(viewsets.ModelViewSet):
 
     # se serializan los pacientes
     serializer_class = PacienteSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 class HistoriaClinicaViewSet(viewsets.ModelViewSet):
     # se obtienen todas las historias clinicas
@@ -21,7 +21,7 @@ class HistoriaClinicaViewSet(viewsets.ModelViewSet):
     serializer_class = HistoriaClinicaSerializer
 
     # con drf jwt se obtiene el usuario autenticado
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class ConsultaControlViewSet(viewsets.ModelViewSet):
@@ -30,5 +30,5 @@ class ConsultaControlViewSet(viewsets.ModelViewSet):
 
     # se serializan las revisiones
     serializer_class = ConsultaControlSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
