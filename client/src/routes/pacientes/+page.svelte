@@ -6,6 +6,8 @@
   // traemos todas las funciones que escribimos en ./api/pacientes.api.js
   import { getPacientes } from './api/pacientes.api.js';
 
+  import TablaPacientes from './components/TablaPacientes.svelte';
+
   // creamos una variable para guardar los pacientes
   let listaTodosPacientes = [];
 
@@ -24,16 +26,20 @@
 
 </script>
 
-<h1 class="text-center mt-20"
+<h1 class="text-center mt-40 text-3xl font-bold text-gray-800 "
   >Lista de pacientes</h1>
 
-{#if listaTodosPacientes.length > 0}
-  <ul>
-    {#each listaTodosPacientes as paciente}
-      <li>{paciente.pac_nombre} con DNI -> {paciente.pac_dni}</li>
-    {/each}
-  </ul>
-{:else}
-  <p>No hay pacientes</p>
-{/if}
+<!-- CONTENEDOR -->
+<div
+  class="container flex justify-center mt-10 mb-10 rounded-lg shadow-lg  mx-auto bg-white dark:bg-gray-800 dark:text-white"
+>
 
+    <!-- llamamos a un componente para que traiga la tabla de pacientes -->
+    <!-- recordar que lo qeu se debe exportar en el componente es el nombre del componente y no el archivo .svelte -->
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full"
+    > 
+      <TablaPacientes {listaTodosPacientes} />
+    </div>
+
+
+</div>
