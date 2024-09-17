@@ -1,13 +1,16 @@
 
 <script>
+  import { goto } from '$app/navigation';
   let username = '';
   let password = '';
   let isUsernameActive = false;
   let isPasswordActive = false;
 
+  // TEMPORAL - Para navegar a la página de pacientes al hacer login solamente redirigimos
   const handleLogin = () => {
     // Aquí puedes agregar la lógica para el login
     console.log("Logging in with:", { username, password });
+    goto('/pacientes');
   };
 </script>
 
