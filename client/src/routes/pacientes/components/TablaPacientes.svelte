@@ -52,7 +52,7 @@
       </thead>
       <tbody>
         {#each listaTodosPacientes as paciente}
-          <ItemPacientes {paciente} />
+           <ItemPacientes {paciente} />
         {/each}
       </tbody>
     </table>
