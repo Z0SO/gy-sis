@@ -101,9 +101,9 @@
               style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
             >
               <div class="px-4 py-6 text-white md:mx-6 md:p-12">
-                <h4 class="mb-6 text-xl font-semibold">We are more than just a company</h4>
+                <h4 class="mb-6 text-xl font-semibold">Hola de nuevo !</h4>
                 <p class="text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Sistema dedicado al registro de historias clinicas hecho por el ingeniero lautaro.
                 </p>
               </div>
             </div>

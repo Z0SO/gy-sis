@@ -24,7 +24,7 @@ export const getHistorias = async () => {
 }
 
 // Función para obtener una historia por su ID
-export getHistoriaById = async (id) => {
+export const getHistoriaById = async (id) => {
     try {
         const response = await api.get(`/${id}`);
         return response.data;
