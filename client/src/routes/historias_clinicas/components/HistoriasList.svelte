@@ -1,27 +1,28 @@
 
 <script>
   import { onMount } from 'svelte';
-  import HistoriesList from './components/HistoriesList.svelte';
-  import { fetchHistories } from './api/histories';
 
-  let histories = [];
+  import { getHistorias } from '../api/historias.api.js';
 
-  // Cargar datos de historias clínicas cuando el componente se monta
-  onMount(async () => {
-    histories = await fetchHistories();
+
+  import HistoriaItem from './HistoriaItem.svelte';
+  
+  // generamos la lista de todas las historias clinicas
+  let LTHC = [];
+
+
+  onMount( async () => {
+    LTHC = await getHistorias();
   });
+
+
 </script>
 
-<main class="p-6">
-  <h1 class="text-2xl font-bold mb-4">Historias Clínicas</h1>
-  
-  {#if histories.length > 0}
-    <HistoriesList {histories} />
-  {:else}
-    <p>Cargando historias clínicas...</p>
-  {/if}
-</main>
 
-<style>
-  /* Estilos opcionales */
-</style>
+{#each LTHC as una_historia}
+
+<a href="/historias_clinicas/{una_historia.paciente}" >
+    <HistoriaItem {una_historia} />
+  </a>
+{/each}
+

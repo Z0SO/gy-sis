@@ -4,8 +4,6 @@
 
     import { goto } from '$app/navigation';
 
-
-
     export let paciente= {};
 
     const verHistoriaClinica = (id_paciente) => {
