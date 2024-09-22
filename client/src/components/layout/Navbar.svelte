@@ -1,153 +1,31 @@
+
 <script>
-  
-  // /components/Navbar.svelte
-  
   import { goto } from '$app/navigation';
-   
-  // por ahora solo redirigimos a la página de pacientes, pero cuando se implemente la autenticacion para el front se debe validar el login para mostrar opciones en la navbar
 
-  const is_login = true
-  const ruta_historia_clinica= `/historias_clinicas`
-
-  // si esta logueado con is_login se debera mostrar la opcion que sea un goto a la lista de todas las historias clinicas
-
-
-
-
+  const is_login = true;
+  const ruta_historia_clinica = '/historias_clinicas';
+  const ruta_crear_historia_clinica = '/historias_clinicas/create';
 </script>
 
+<nav class="fixed top-0 left-0 w-full flex items-center justify-between bg-zinc-50 dark:bg-neutral-700 py-2 px-4 shadow-md z-50">
+  <div class="flex justify-between w-full lg:items-center">
+    <!-- Logo / Home -->
+    <a href="/" class="text-xl font-bold text-black dark:text-white">Home</a>
 
-<!-- Main navigation container -->
-
-
-
-<nav
-  class="fixed top-0 left-0 z-50 w-full flex flex-nowrap items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4"
-  data-twe-navbar-ref>
-  <div class="flex w-full flex-wrap items-center justify-between px-3">
-    <!-- Hamburger button for mobile view -->
-    <button
-      class="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
-      type="button"
-      data-twe-collapse-init
-      data-twe-target="#navbarSupportedContent8"
-      aria-controls="navbarSupportedContent8"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <!-- Hamburger icon -->
-      <span
-        class="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor">
-          <path
-            fill-rule="evenodd"
-            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-            clip-rule="evenodd" />
-        </svg>
-      </span>
+    <!-- Mobile menu button -->
+    <button class="lg:hidden text-black dark:text-white" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
     </button>
 
-    <!-- Collapsible navbar container -->
-
-    <div
-      class="!visible mt-2 hidden flex-grow basis-[100%] items-center justify-center lg:mt-0 lg:!flex lg:basis-auto"
-      id="navbarSupportedContent8"
-      data-twe-collapse-item>
-      <!-- Left links -->
-      <ul
-        class="list-style-none flex flex-col ps-0 lg:mt-1 lg:flex-row"
-        data-twe-navbar-nav-ref>
-        <!-- Home link -->
-        <li
-          class="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2"
-          data-twe-nav-item-ref>
-          <a
-            class="text-black dark:text-white lg:px-2"
-            aria-current="page"
-            href="/"
-            >Home</a
-          >
-        </li>
-        <!-- Link -->
-        <li
-          class="mb-4 ps-2 lg:mb-0 lg:pe-1 lg:ps-0"
-          data-twe-nav-item-ref
-        >
-          <a
-            class="p-0 hover:cursor-pointer text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-            href={ruta_historia_clinica}
-            >Historias Clinicas</a
-          >
-        </li>
-        <!-- Dropdown link -->
-        <li
-          class="mb-4 ps-2 lg:mb-0 lg:pe-1 lg:ps-0"
-          data-twe-nav-item-ref
-          data-twe-dropdown-ref>
-          <!-- Dropdown -->
-          <a
-            class="flex items-center text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-            href="#"
-            type="button"
-            id="dropdownMenuButton2"
-            data-twe-dropdown-toggle-ref
-            aria-expanded="false">
-            Dropdown
-            <span class="ms-1 [&>svg]:w-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor">
-                <path
-                  fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clip-rule="evenodd" />
-              </svg>
-            </span>
-          </a>
-          <ul
-            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
-            aria-labelledby="dropdownMenuButton1"
-            data-twe-dropdown-menu-ref>
-            <li>
-              <a
-                class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                href="#"
-                data-twe-dropdown-item-ref
-                >Action</a
-              >
-            </li>
-            <li>
-              <a
-                class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                href="#"
-                data-twe-dropdown-item-ref
-                >Another action</a
-              >
-            </li>
-            <li>
-              <a
-                class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                href="#"
-                data-twe-dropdown-item-ref
-                >Something else here</a
-              >
-            </li>
-          </ul>
-        </li>
-        <!-- Disabled link -->
-        <li
-          class="mb-4 ps-2 lg:mb-0 lg:pe-1 lg:ps-0"
-          data-twe-nav-link-ref>
-          <a
-            class="pointer-events-none text-black/30 dark:text-white/30 lg:px-2"
-            >Disabled</a
-          >
-        </li>
-      </ul>
-    </div>
+    <!-- Links -->
+    <ul class="hidden lg:flex space-x-4">
+      <li><a href={ruta_historia_clinica} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Historias Clínicas</a></li>
+      {#if is_login}
+        <li><a href={ruta_crear_historia_clinica} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Crear Historia Clínica</a></li>
+      {/if}
+    </ul>
   </div>
 </nav>
 

@@ -1,86 +1,59 @@
+
 <script>
   import { onMount } from 'svelte';
-
-  // pedimos la funcion que nos traera el paciente por id
   import { getPacienteById } from '../../pacientes/api/pacientes.api.js';
+  import { goto } from '$app/navigation';
 
-  // exportamos la historia clinica para poder usarla en el componente HistoriasList.svelte
   export let una_historia = {};
-
-  // en la historia clinica esta el id del paciente guardamos el id del paciente
-  const id_paciente = una_historia.paciente;
-
-  // creamos un objeto paciente vacio para guardar la informacion del paciente
   let un_paciente = {};
 
-  // Una vez que se monta el componente, traemos el paciente con el id correspondiente a su historia clínica
+  const gotoHistoriaClinica = () => {
+    goto(`/historias_clinicas/${una_historia.id}`);
+  };
+
   onMount(async () => {
     try {
-      
-      const pac = await getPacienteById(id_paciente);
-
-      // guardamos el paciente en la variable un_paciente
-      un_paciente = pac;
+      un_paciente = await getPacienteById(una_historia.paciente);
     } catch (error) {
       console.error("Error al obtener el paciente:", error);
     }
   });
-
-
 </script>
 
-
-<div class="bg-white shadow-lg rounded-lg px-8 pt-8 pb-8 mb-8 flex flex-col my-4 max-w-4xl mx-auto border border-gray-200">
-  <!-- Título con el nombre del paciente --> 
-  <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-6">Historia Clínica de {un_paciente.pac_nombre}</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <!-- Motivo de consulta -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Motivo de consulta</label>
-      <p class="text-base text-gray-800">{una_historia.motivo_consulta}</p>
+<!-- Fila de la tabla con mejor espaciado, interactividad y transiciones -->
+<tr on:click={gotoHistoriaClinica} 
+  class="border-b border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-700 cursor-pointer transition-all duration-200 ease-linear">
+  <!-- Paciente -->
+  <td class="py-4 px-6 text-left whitespace-nowrap">
+    <div class="flex items-center">
+      <span class="font-medium text-gray-800 dark:text-neutral-200">{un_paciente?.pac_nombre || 'Cargando...'}</span>
     </div>
-
-    <!-- Derivado por -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Derivado por</label>
-      <p class="text-base text-gray-800">{una_historia.derivado_por}</p>
+  </td>
+  
+  <!-- Motivo de consulta -->
+  <td class="py-4 px-6 text-left">
+    <div class="flex items-center">
+      <span>{una_historia.motivo_consulta}</span>
     </div>
-  </div>
+  </td>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <!-- Antecedentes clínicos -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Antecedentes clínicos</label>
-      <p class="text-base text-gray-800">{una_historia.antecedentes_clinicos}</p>
-    </div>
+  <!-- Derivado por -->
+  <td class="py-4 px-6 text-left">
+    <span>{una_historia.derivado_por}</span>
+  </td>
 
-    <!-- HC Laboratorio -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">HC Laboratorio</label>
-      <p class="text-base text-gray-800">{una_historia.hc_laboratorio}</p>
-    </div>
-  </div>
+  <!-- Antecedentes clínicos -->
+  <td class="py-4 px-6 text-left">
+    <span>{una_historia.antecedentes_clinicos}</span>
+  </td>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <!-- Diagnóstico presuntivo -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Diagnóstico presuntivo</label>
-      <p class="text-base text-gray-800">{una_historia.diagnostico_presuntivo}</p>
-    </div>
-
-    <!-- Tratamientos anteriores -->
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Tratamientos anteriores</label>
-      <p class="text-base text-gray-800">{una_historia.tratamientos_anteriores}</p>
-    </div>
-  </div>
+  <!-- Diagnóstico presuntivo -->
+  <td class="py-4 px-6 text-left">
+    <span>{una_historia.diagnostico_presuntivo}</span>
+  </td>
 
   <!-- Tratamiento actual -->
-  <div class="grid grid-cols-1 mb-8">
-    <div>
-      <label class="block text-sm font-semibold text-gray-600 uppercase mb-2">Tratamiento actual</label>
-      <p class="text-base text-gray-800">{una_historia.tratamiento_actual}</p>
-    </div>
-  </div>
-</div>
+  <td class="py-4 px-6 text-left">
+    <span>{una_historia.tratamiento_actual}</span>
+  </td>
+</tr>

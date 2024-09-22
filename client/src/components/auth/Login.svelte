@@ -16,7 +16,7 @@
 
 <section class="gradient-form h-full bg-transparent dark:bg-transparent dark:text-neutral-200"
 >
-  <div class="container h-full p-10"
+  <div class="container h-full p-10 mx-auto"
   >
     <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200 shadow-lg"
     >
@@ -79,18 +79,25 @@
                     >
                       Log in
                     </button>
-                    <a href="#!" class="text-sm text-blue-600">Forgot password?</a>
+
+
+                    <!-- por si se olvida la contraseña -->
+                    <!-- <a href="#!" class="text-sm text-blue-600">Forgot password?</a> -->
+
+
+
                   </div>
 
-                  <!-- Botón de Registro -->
-                  <div class="flex items-center justify-between pb-6">
-                    <p class="mb-0">Don't have an account?</p>
-                    <button
-                      class="inline-block rounded border-2 border-red-500 px-6 py-2 text-xs font-medium text-red-500 transition duration-150 ease-in-out hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-800"
-                    >
-                      Register
-                    </button>
-                  </div>
+
+                  <!-- <!-1- Botón de Registro -1-> -->
+                  <!-- <div class="flex items-center justify-between pb-6"> -->
+                  <!--   <p class="mb-0">Don't have an account?</p> -->
+                  <!--   <button -->
+                  <!--     class="inline-block rounded border-2 border-red-500 px-6 py-2 text-xs font-medium text-red-500 transition duration-150 ease-in-out hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-800" -->
+                  <!--   > -->
+                  <!--     Register -->
+                  <!--   </button> -->
+                  <!-- </div> -->
                 </form>
               </div>
             </div>
@@ -103,7 +110,7 @@
               <div class="px-4 py-6 text-white md:mx-6 md:p-12">
                 <h4 class="mb-6 text-xl font-semibold">Hola de nuevo !</h4>
                 <p class="text-sm">
-                  Sistema dedicado al registro de historias clinicas hecho por el ingeniero lautaro.
+                  Ingrese sus datos para acceder a la plataforma de GY-SIS.
                 </p>
               </div>
             </div>

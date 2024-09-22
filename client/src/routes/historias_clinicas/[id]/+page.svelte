@@ -16,7 +16,7 @@
   let historiaClinica = {};
 
 
-  let un_paciente = null;
+  let un_paciente = {};
 
   let cargando = true;
 
@@ -54,40 +54,163 @@
 
 <br><br><br><br><br>
 
-<!-- esto en definitiva sera un componente que se le pase toda la logica -->
-<!-- los campos de Historia Clinica son: -->
-<!--     paciente = models.OneToOneField(Paciente, related_name='historia_clinica', on_delete=models.CASCADE) -->
+<!-- importamos el componente de navegación -->
+<div
+  class="container mx-auto px-4 sm:px-8 max-w-3xl mt-8"
+>
 
+  <div
+    class="bg-white dark:bg-neutral-800  shadow-lg rounded-lg p-6"
+  >
+    <h1
+      class="text-2xl font-semibold text-neutral-800 dark:text-neutral-200"
+    >
+      Historia Clínica de {un_paciente.pac_nombre}
+    </h1>
 
-<!--     motivo_consulta = models.TextField() -->
-<!--     derivado_por = models.CharField(max_length=50) -->
-<!--     antecedentes_clinicos = models.TextField() -->
-<!--     hc_laboratorio = models.TextField(blank=True, null=True) -->
-<!--     diagnostico_presuntivo = models.TextField() -->
-<!--     tratamientos_anteriores = models.TextField() -->
-<!--     tratamiento_actual = models.TextField() -->
-<!--     fecha_creacion = models.DateTimeField(auto_now_add=True) -->
+    {#if cargando}
+      <p>Cargando...</p>
+    {:else}
+      {#if error_page}
+        <p>{error_page.message}</p>
+      {:else}
+        <div
+          class="mt-4"
+        >
+          <div
+            class="flex flex-col"
+          >
+            <div
+              class="flex flex-col"
+            >
+              <label
+                for="motivo_consulta"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Motivo de consulta
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.motivo_consulta}
+              </p>
+            </div>
 
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="derivado_por"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Derivado por
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.derivado_por}
+              </p>
+            </div>
 
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="antecedentes_clinicos"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Antecedentes clínicos
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.antecedentes_clinicos}
+              </p>
+            </div>
 
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="hc_laboratorio"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Historia Clínica de laboratorio
+              </label>
+              <p class="text-neutral-800 dark:text-neutral-200">
+                {historiaClinica.hc_laboratorio}
+              </p>
+            </div>
 
-{#if cargando}
-  <p>Cargando...</p>
-{:else}
-  {#if error_page}
-    <p>{error_page.message}</p>
-  {:else}
-    
-    <ul>
-      <li>Historia Clinica del paciente: {un_paciente.pac_nombre}</li>
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="diagnostico_presuntivo"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Diagnóstico presuntivo
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.diagnostico_presuntivo}
+              </p>
+            </div>
 
-      <li>Motivo de consulta: {historiaClinica.motivo_consulta}</li>
-      <li>Derivado por: {historiaClinica.derivado_por}</li>
-      <li>Antecedentes clínicos: {historiaClinica.antecedentes_clinicos}</li>
-      <li>Historia Clínica de laboratorio: {historiaClinica.hc_laboratorio}</li>
-      <li>Diagnóstico presuntivo: {historiaClinica.diagnostico_presuntivo}</li>
-      <li>Tratamientos anteriores: {historiaClinica.tratamientos_anteriores}</li>
-      <li>Tratamiento actual: {historiaClinica.tratamiento_actual}</li>
-    </ul>
-  {/if}
-{/if}
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="tratamientos_anteriores"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Tratamientos anteriores
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.tratamientos_anteriores}
+              </p>
+            </div>
+
+            <div
+              class="flex flex-col mt-4"
+            >
+              <label
+                for="tratamiento_actual"
+                class="text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+              >
+                Tratamiento actual
+              </label>
+              <p
+                class="text-neutral-800 dark:text-neutral-200"
+              >
+                {historiaClinica.tratamiento_actual}
+              </p>
+            </div>
+          
+            <!-- aqui estaran botones para. editar la historia clinica, agregar una nueva consulta ya que un paciente puede tener una o mas consultas -->
+            <div
+              class="flex justify-end mt-8"
+            >
+              <button
+                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+              >
+                Editar
+              </button>
+            
+              <button
+                class="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg ml-4"
+              >
+                Nueva Consulta
+              </button>
+              
+            </div>
+
+          </div>
+        </div>
+      {/if}
+    {/if}
+  </div>
+</div>
