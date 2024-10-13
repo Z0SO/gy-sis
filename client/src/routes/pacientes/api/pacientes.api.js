@@ -31,7 +31,7 @@ export const getPacienteById = async (id) => {
 
 export const crearPaciente = async (paciente) => {
     try {
-        const response = await axios.post(API_URL, paciente);
+        const response = await axios.post(API_URL+'/', paciente);
         return response.data;
     }
     catch (error) {

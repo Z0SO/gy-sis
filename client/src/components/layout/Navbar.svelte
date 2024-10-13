@@ -5,6 +5,11 @@
   const is_login = true;
   const ruta_historia_clinica = '/historias_clinicas';
   const ruta_crear_historia_clinica = '/historias_clinicas/create';
+  const ruta_nuevo_paciente = '/pacientes/create';
+
+
+  const ruta_logout = '/';
+
 </script>
 
 <nav class="fixed top-0 left-0 w-full flex items-center justify-between bg-zinc-50 dark:bg-neutral-700 py-2 px-4 shadow-md z-50">
@@ -24,6 +29,9 @@
       <li><a href={ruta_historia_clinica} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Historias Clínicas</a></li>
       {#if is_login}
         <li><a href={ruta_crear_historia_clinica} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Crear Historia Clínica</a></li>
+        <!-- para añadir nuevo paciente -->
+        <li><a href={ruta_nuevo_paciente} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Nuevo Paciente</a></li>
+        <li><a href={ruta_logout} class="text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Cerrar Sesión</a></li>
       {/if}
     </ul>
   </div>
