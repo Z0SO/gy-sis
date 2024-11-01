@@ -1,5 +1,6 @@
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./src/**/*.{html,js,svelte}",
     "./node_modules/@sveltejs/**/*.svelte"
@@ -13,6 +14,6 @@ module.exports = {
     },
   },
 
-
   plugins: [],
-}
+};
+
